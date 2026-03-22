@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  url: string;
+  description?: string;
+  index: number;
+}
+
+const { title, url, description, index } = Astro.props;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group block w-full rounded-2xl bg-(--color-card) px-6 py-4 text-center
+         transition-all duration-300 hover:bg-(--color-card-hover) hover:scale-[1.02]
+         hover:shadow-lg hover:shadow-purple-500/10 animate-fade-in-up"
+  style={`animation-delay: ${index * 100}ms`}
+>
+  <span class="block text-lg font-semibold text-white group-hover:text-(--color-accent) transition-colors">
+    {title}
+  </span>
+  {description && (
+    <span class="block mt-1 text-sm text-gray-400">
+      {description}
+    </span>
+  )}
+</a>

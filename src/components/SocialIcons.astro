@@ -1,0 +1,25 @@
+---
+import { socials } from "../data/links";
+---
+
+<div class="flex items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 600ms">
+  {socials.map((social) => (
+    <a
+      href={social.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={social.platform}
+      class="rounded-full p-2.5 text-gray-400 transition-all duration-300
+             hover:text-white hover:bg-white/10 hover:scale-110"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="size-5"
+      >
+        <path d={social.icon} />
+      </svg>
+    </a>
+  ))}
+</div>
