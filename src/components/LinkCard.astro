@@ -3,27 +3,42 @@ interface Props {
   title: string;
   url: string;
   description?: string;
+  icon?: string | string[];
+  viewBox?: string;
   index: number;
 }
 
-const { title, url, description, index } = Astro.props;
+const { title, url, description, icon, viewBox = "0 0 24 24", index } = Astro.props;
+const paths = icon ? (Array.isArray(icon) ? icon : [icon]) : [];
 ---
 
 <a
   href={url}
   target="_blank"
   rel="noopener noreferrer"
-  class="group block w-full rounded-2xl bg-(--color-card) px-6 py-4 text-center
+  class="group flex items-center gap-4 w-full rounded-2xl bg-(--color-card) px-6 py-4
          transition-all duration-300 hover:bg-(--color-card-hover) hover:scale-[1.02]
          hover:shadow-lg hover:shadow-purple-500/10 animate-fade-in-up"
   style={`animation-delay: ${index * 100}ms`}
 >
-  <span class="block text-lg font-semibold text-white group-hover:text-(--color-accent) transition-colors">
-    {title}
-  </span>
-  {description && (
-    <span class="block mt-1 text-sm text-gray-400">
-      {description}
-    </span>
+  {paths.length > 0 && (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox={viewBox}
+      fill="currentColor"
+      class="size-6 shrink-0 text-gray-400 group-hover:text-(--color-accent) transition-colors"
+    >
+      {paths.map((d) => <path d={d} />)}
+    </svg>
   )}
+  <div class="min-w-0">
+    <span class="block text-lg font-semibold text-white group-hover:text-(--color-accent) transition-colors">
+      {title}
+    </span>
+    {description && (
+      <span class="block mt-0.5 text-sm text-gray-400">
+        {description}
+      </span>
+    )}
+  </div>
 </a>

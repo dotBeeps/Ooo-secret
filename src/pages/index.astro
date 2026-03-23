@@ -1,7 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
 import LinkCard from "../components/LinkCard.astro";
-import SocialIcons from "../components/SocialIcons.astro";
 import { profile, links } from "../data/links";
 ---
 
@@ -12,7 +11,7 @@ import { profile, links } from "../data/links";
       <img
         src={profile.avatar}
         alt={profile.name}
-        class="size-24 rounded-full ring-4 ring-purple-500/30 shadow-lg shadow-purple-500/20"
+        class="size-28 rounded-full ring-4 ring-purple-500/30 shadow-lg shadow-purple-500/20 object-cover"
       />
     </div>
 
@@ -29,12 +28,11 @@ import { profile, links } from "../data/links";
           title={link.title}
           url={link.url}
           description={link.description}
+          icon={link.icon}
+          viewBox={link.viewBox}
           index={i + 2}
         />
       ))}
     </div>
-
-    <!-- Socials -->
-    <SocialIcons />
   </main>
 </Base>
