@@ -2,7 +2,7 @@ name: Preview Deployment
 
 on:
   pull_request:
-    branches: [master]
+    branches: [claude/link-tree-site-aNmXe]
   workflow_dispatch:
 
 permissions:
